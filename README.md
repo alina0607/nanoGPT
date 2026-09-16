@@ -73,11 +73,15 @@ nanoGPT/
 │   └── tinyshakespeare/
 │       ├── input.txt      # raw corpus
 │       └── README.md      # provenance, checksum, corpus statistics
+├── notebooks/             # exploration only; see notebooks/README.md
+├── tests/                 # acceptance criteria, written before each component
 ├── LICENSE
 └── README.md
 ```
 
-Implementation modules are added as the roadmap progresses.
+Implementation modules live at the repository root and are added as the roadmap
+progresses. Notebooks are for working things out; anything that needs to be
+imported, tested or reviewed is moved into a module.
 
 ---
 
