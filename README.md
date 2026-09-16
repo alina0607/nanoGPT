@@ -14,34 +14,54 @@ step by step. The roadmap below tracks progress.
 
 ## Roadmap
 
-Each step is a self-contained commit with its own explanation.
+The build follows a set of study notes written alongside Karpathy's lecture
+(*[從零打造 GPT](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e)*,
+in Traditional Chinese). Each row is one commit: read the section, implement it,
+make the tests pass.
 
-### Data
-- [x] Character-level dataset (tiny Shakespeare)
-- [ ] Vocabulary and character-level tokenizer (`encode` / `decode`)
-- [ ] Train/validation split
-- [ ] Context windows (`block_size`) and batching
+### Foundations
 
-### Baseline
-- [ ] Bigram language model
-- [ ] Cross-entropy loss
-- [ ] Sampling loop (`generate`)
-- [ ] Training loop with periodic validation loss
+| # | Component | Notes |
+| --- | --- | --- |
+| 1 | Corpus | [§1](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch2) ✅ |
+| 2 | Character-level tokenizer | [§2](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch3) |
+| 3 | Train/validation split | [§3](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch4) |
+| 4 | Context windows (`block_size`) | [§4](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch5) |
+| 5 | Batching | [§5](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch6) |
 
-### Attention
-- [ ] Causal averaging via a lower-triangular matrix
-- [ ] Masked softmax attention
-- [ ] Token and positional embeddings
-- [ ] Single-head self-attention (query / key / value)
-- [ ] Scaled dot-product attention
-- [ ] Multi-head attention
+### Baseline model
+
+| # | Component | Notes |
+| --- | --- | --- |
+| 6 | Bigram language model | [§6](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch7) |
+| 7 | Cross-entropy loss | [§7](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch8) |
+| 8 | Autoregressive sampling | [§8](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch9) |
+| 9 | Training loop, AdamW, loss estimation | [§9](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch10) |
+
+### Self-attention
+
+| # | Component | Notes |
+| --- | --- | --- |
+| 10 | Causal averaging, written as a loop | [§10](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch11) |
+| 11 | The same average as a matrix product | [§11](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch12) |
+| 12 | Batched matrix form | [§12](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch13) |
+| 13 | Masked softmax | [§13](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch14) |
+| 14 | Token and positional embeddings | [§14](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch15) |
+| 15 | Single head: query, key, value | [§15](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch16) |
+| 16 | Scaling by the square root of head size | [§17](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch18) |
+| 17 | One head wired into the network | [§18](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch19) |
+| 18 | Multi-head attention | [§19](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch20) |
 
 ### Transformer block
-- [ ] Position-wise feed-forward network
-- [ ] Residual connections
-- [ ] Layer normalisation (pre-norm)
-- [ ] Dropout
-- [ ] Stacked blocks and a scaled-up configuration
+
+| # | Component | Notes |
+| --- | --- | --- |
+| 19 | Position-wise feed-forward network | [§20](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch21) |
+| 20 | Residual connections and projections | [§21](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch22) |
+| 21 | Layer normalisation | [§22](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch23) |
+| 22 | Dropout and the scaled-up configuration | [§23](https://claude.ai/code/artifact/c0bb22bc-324e-458d-90d8-c542033da67e#ch24) |
+
+Reference implementation: [karpathy/ng-video-lecture](https://github.com/karpathy/ng-video-lecture).
 
 ---
 
